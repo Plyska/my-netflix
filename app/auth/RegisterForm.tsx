@@ -1,38 +1,33 @@
-import { SyntheticEvent } from "react";
 import Input from "@/components/Input";
 import { TabProps } from "./types";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { RegisterFormFields } from "./types";
 
 const RegisterForm = ({ toggleTab }: TabProps) => {
-  const submitRegisterForm = (event: SyntheticEvent) => {
-    event.preventDefault();
-    console.log(event);
+  const { register, handleSubmit } = useForm<RegisterFormFields>();
+
+  const submitRegisterForm: SubmitHandler<RegisterFormFields> = (data) => {
+    console.log(data);
   };
 
   return (
     <>
       <h2 className="text-white text-4xl mb-8 font-semibold">Sign Up</h2>
-      <form onSubmit={submitRegisterForm} className="flex flex-col gap-4">
+      <form
+        onSubmit={handleSubmit(submitRegisterForm)}
+        className="flex flex-col gap-4"
+      >
         <Input
-          name="username"
-          //   value={username}
-          //   onChange={handleChangeUsername}
+          {...register("username")}
           label="Username"
           id="name"
+          type="text"
         />
 
-        <Input
-          name="email"
-          //   value={email}
-          //   onChange={handleChangeEmail}
-          label="Email"
-          id="email"
-          type="email"
-        />
+        <Input {...register("email")} label="Email" id="email" type="email" />
 
         <Input
-          name="password"
-          //   value={password}
-          //   onChange={handleChangePassword}
+          {...register("password")}
           label="Password"
           id="password"
           type="password"

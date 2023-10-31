@@ -1,10 +1,17 @@
+import { forwardRef } from "react";
 import { InputProps } from "./types";
+import { UseFormRegister } from "react-hook-form";
+import { LoginFormFields, RegisterFormFields } from "@/app/auth/types";
 
-const Input = (props: InputProps) => {
+const Input = forwardRef<
+  HTMLInputElement,
+  InputProps & ReturnType<UseFormRegister<LoginFormFields | RegisterFormFields>>
+>(function (props: InputProps, ref) {
   return (
     <div className="relative">
       <input
         {...props}
+        ref={ref}
         className="
          block
          rounded-md
@@ -46,6 +53,6 @@ const Input = (props: InputProps) => {
       </label>
     </div>
   );
-};
+});
 
 export default Input;

@@ -6,21 +6,6 @@ import LoginForm from "./LoginForm";
 
 export default function Auth() {
   const [tab, setTab] = useState<"login" | "register">("login");
-  //   const [email, setEmail] = useState<string>("");
-  //   const [username, setUsername] = useState<string>("");
-  //   const [password, setPassword] = useState<string>("");
-
-  //   const handleChangeEmail = (event: ChangeEvent<HTMLInputElement>) => {
-  //     setEmail(event.target.value);
-  //   };
-
-  //   const handleChangeUsername = (event: ChangeEvent<HTMLInputElement>) => {
-  //     setUsername(event.target.value);
-  //   };
-
-  //   const handleChangePassword = (event: ChangeEvent<HTMLInputElement>) => {
-  //     setUsername(event.target.value);
-  //   };
 
   const toggleTab = useCallback(() => {
     setTab((currentTab) => (currentTab === "login" ? "register" : "login"));
